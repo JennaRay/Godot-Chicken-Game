@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cicvvujfbscqs"]
+
+[ext_resource type="PackedScene" uid="uid://dh0p16yaxw5ya" path="res://Player/chimken.tscn" id="1_5jujb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ct1sx"]
+size = Vector2(99.0908, 15.1724)
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 2305.0
+offset_bottom = 649.0
+color = Color(0.512077, 0.829917, 0.888613, 1)
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="player" parent="Foreground" instance=ExtResource("1_5jujb")]
+unique_name_in_owner = true
+position = Vector2(171, 470)
+scale = Vector2(0.480001, 0.480001)
+
+[node name="ground" type="StaticBody2D" parent="Foreground"]
+unique_name_in_owner = true
+
+[node name="groundCollision" type="CollisionShape2D" parent="Foreground/ground"]
+position = Vector2(721.153, 575.333)
+scale = Vector2(14.5694, -9.6666)
+shape = SubResource("RectangleShape2D_ct1sx")
+debug_color = Color(0.986632, 0, 0.321576, 0.42)
