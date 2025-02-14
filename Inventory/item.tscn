@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0jyggcb4wdjx"]
+
+[ext_resource type="Script" path="res://Inventory/item.gd" id="1_32lsn"]
+[ext_resource type="Texture2D" uid="uid://c1w24yryotls0" path="res://Inventory/donut.png" id="2_n5105"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tulpf"]
+radius = 54.037
+
+[node name="item" type="Node2D"]
+script = ExtResource("1_32lsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n5105")
+
+[node name="interactBox" type="Area2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactBox"]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_tulpf")
+
+[connection signal="body_entered" from="interactBox" to="." method="_on_interact_box_body_entered"]

@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cicvvujfbscqs"]
+[gd_scene load_steps=8 format=3 uid="uid://cicvvujfbscqs"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_4lda3"]
 [ext_resource type="PackedScene" uid="uid://dh0p16yaxw5ya" path="res://Player/chimken.tscn" id="1_5jujb"]
+[ext_resource type="PackedScene" uid="uid://dyadulnnnejok" path="res://Inventory/inventory.tscn" id="3_tjjlu"]
+[ext_resource type="PackedScene" uid="uid://c0jyggcb4wdjx" path="res://Inventory/item.tscn" id="4_tcv4s"]
+[ext_resource type="PackedScene" uid="uid://ctbfsq4qbr8pg" path="res://Antagonist/antagonist.tscn" id="6_gcrm8"]
+[ext_resource type="Texture2D" uid="uid://ctbu63g484uqv" path="res://Map/barn_icon.png" id="6_i3a6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct1sx"]
-size = Vector2(99.0908, 15.1724)
+size = Vector2(183.261, 15.1724)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_4lda3")
 
 [node name="Background" type="CanvasLayer" parent="."]
 
@@ -15,17 +21,49 @@ offset_bottom = 649.0
 color = Color(0.512077, 0.829917, 0.888613, 1)
 
 [node name="Foreground" type="CanvasLayer" parent="."]
-
-[node name="player" parent="Foreground" instance=ExtResource("1_5jujb")]
-unique_name_in_owner = true
-position = Vector2(171, 470)
-scale = Vector2(0.480001, 0.480001)
+follow_viewport_enabled = true
 
 [node name="ground" type="StaticBody2D" parent="Foreground"]
 unique_name_in_owner = true
 
+[node name="ColorRect" type="ColorRect" parent="Foreground/ground"]
+offset_left = -467.0
+offset_top = 501.0
+offset_right = 2365.0
+offset_bottom = 968.0
+color = Color(0.223855, 0.344092, 0.198801, 1)
+
 [node name="groundCollision" type="CollisionShape2D" parent="Foreground/ground"]
-position = Vector2(721.153, 575.333)
+position = Vector2(1039, 575.333)
 scale = Vector2(14.5694, -9.6666)
 shape = SubResource("RectangleShape2D_ct1sx")
 debug_color = Color(0.986632, 0, 0.321576, 0.42)
+
+[node name="item" parent="Foreground" instance=ExtResource("4_tcv4s")]
+position = Vector2(-35, 457)
+
+[node name="item2" parent="Foreground" instance=ExtResource("4_tcv4s")]
+position = Vector2(576, 454)
+
+[node name="antagonist" parent="Foreground" instance=ExtResource("6_gcrm8")]
+position = Vector2(884, 453)
+
+[node name="BarnIcon" type="Sprite2D" parent="Foreground"]
+position = Vector2(1945, 286)
+scale = Vector2(4.45238, 4.25)
+texture = ExtResource("6_i3a6x")
+
+[node name="player" parent="Foreground" instance=ExtResource("1_5jujb")]
+unique_name_in_owner = true
+position = Vector2(116, 468)
+scale = Vector2(0.480001, 0.480001)
+
+[node name="Camera2D" type="Camera2D" parent="Foreground/player"]
+position = Vector2(-2.08331, -6.24991)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="HUD" instance=ExtResource("3_tjjlu")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(596, 69)

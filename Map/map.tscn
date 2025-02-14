@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://vd8uo1wp36yi"]
+[gd_scene load_steps=6 format=3 uid="uid://vd8uo1wp36yi"]
 
+[ext_resource type="Script" path="res://Map/map.gd" id="1_djte1"]
 [ext_resource type="Texture2D" uid="uid://ctbu63g484uqv" path="res://Map/barn_icon.png" id="1_ywldt"]
 [ext_resource type="Texture2D" uid="uid://df0br7rk7d7by" path="res://Map/barn_icon_hover.png" id="2_ect6c"]
 [ext_resource type="Texture2D" uid="uid://nv4lsunudrtb" path="res://Map/chicken1_top.png" id="3_p0vcf"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_tk5xl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 543, 504, 0, 0, 0, 0, 518, 361, 0, 0, 0, 0, 594, 229, 0, 0, 0, 0, 535, 89)
+}
+point_count = 4
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_djte1")
 
 [node name="background" type="CanvasLayer" parent="."]
 
@@ -39,10 +47,29 @@ grow_vertical = 0
 texture_normal = ExtResource("1_ywldt")
 texture_hover = ExtResource("2_ect6c")
 
-[node name="Sprite2D" type="Sprite2D" parent="foreground"]
-position = Vector2(550, 444)
-scale = Vector2(0.75, 0.75)
+[node name="TextureButton2" type="TextureButton" parent="foreground"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -513.0
+offset_top = -354.0
+offset_right = -408.0
+offset_bottom = -246.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("1_ywldt")
+texture_hover = ExtResource("2_ect6c")
 
-[node name="Chicken1Top" type="Sprite2D" parent="foreground/Sprite2D"]
-position = Vector2(-5.24521e-06, 9.53674e-07)
+[node name="Path2D" type="Path2D" parent="foreground"]
+curve = SubResource("Curve2D_tk5xl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="foreground/Path2D"]
+position = Vector2(543, 504)
+rotation = -1.74387
+
+[node name="Chicken1Top" type="Sprite2D" parent="foreground/Path2D/PathFollow2D"]
+position = Vector2(1, -8)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_p0vcf")
