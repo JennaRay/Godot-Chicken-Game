@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu58gvnbqropm"]
+
+[ext_resource type="Script" path="res://Inventory/prompt.gd" id="1_ngmao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ksy3d"]
+radius = 54.037
+
+[node name="prompt" type="Node2D"]
+script = ExtResource("1_ngmao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="interactBox" type="Area2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactBox"]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_ksy3d")
+
+[connection signal="body_entered" from="interactBox" to="." method="_on_interact_box_body_entered"]

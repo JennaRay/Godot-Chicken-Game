@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://5y0fc4ntavwd"]
+
+[ext_resource type="Script" path="res://Barn/workbench.gd" id="1_6jp7x"]
+[ext_resource type="Texture2D" uid="uid://bvj8tn504lcg7" path="res://Barn/workbench.png" id="1_efu00"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcvga"]
+size = Vector2(256, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2mix"]
+size = Vector2(56, 57)
+
+[node name="workbench" type="StaticBody2D"]
+script = ExtResource("1_6jp7x")
+
+[node name="Workbench" type="Sprite2D" parent="."]
+position = Vector2(5, 43)
+texture = ExtResource("1_efu00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -2)
+shape = SubResource("RectangleShape2D_qcvga")
+one_way_collision = true
+
+[node name="slot1" type="Area2D" parent="."]
+position = Vector2(-91, -45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slot1"]
+shape = SubResource("RectangleShape2D_l2mix")
+disabled = true
+
+[node name="slot2" type="Area2D" parent="."]
+position = Vector2(-29, -45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slot2"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_l2mix")
+disabled = true
+
+[node name="slot3" type="Area2D" parent="."]
+position = Vector2(38, -46)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slot3"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_l2mix")
+disabled = true
+
+[node name="slot4" type="Area2D" parent="."]
+position = Vector2(102, -46)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slot4"]
+shape = SubResource("RectangleShape2D_l2mix")
+disabled = true

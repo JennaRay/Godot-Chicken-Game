@@ -1,0 +1,304 @@
+[gd_scene load_steps=6 format=3 uid="uid://4erdjqt75pqx"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_1bsl4"]
+[ext_resource type="PackedScene" uid="uid://dyadulnnnejok" path="res://Inventory/inventory.tscn" id="1_k80fe"]
+[ext_resource type="FontFile" uid="uid://dmoi3cxs8kmvi" path="res://fonts/PressStart2P-Regular.ttf" id="2_w8dkx"]
+[ext_resource type="Texture2D" uid="uid://cciqqlt2ppsl7" path="res://settings.png" id="4_x565s"]
+[ext_resource type="Texture2D" uid="uid://cpfsb1lfuo87a" path="res://settings-hover.png" id="5_8ntvr"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_1bsl4")
+
+[node name="promptLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -107.5
+offset_right = 31.5
+offset_bottom = -84.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "press 'E'"
+
+[node name="Inventory" parent="." instance=ExtResource("1_k80fe")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(209, 99)
+
+[node name="topbar" type="CanvasGroup" parent="."]
+position = Vector2(66, 0)
+
+[node name="ColorRect" type="ColorRect" parent="topbar"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 160.0
+offset_right = 807.0
+offset_bottom = 40.0
+grow_horizontal = 2
+color = Color(0.0352941, 0.0352941, 0.0352941, 0.235294)
+
+[node name="ColorRect2" type="ColorRect" parent="topbar"]
+offset_left = 597.0
+offset_top = 6.0
+offset_right = 646.0
+offset_bottom = 30.0
+
+[node name="Label" type="Label" parent="topbar/ColorRect2"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+text = "Tab"
+
+[node name="Label2" type="Label" parent="topbar/ColorRect2"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 5.0
+offset_right = 199.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_w8dkx")
+text = "Inventory"
+
+[node name="ColorRect3" type="ColorRect" parent="topbar"]
+offset_left = 176.0
+offset_top = 7.0
+offset_right = 244.0
+offset_bottom = 31.0
+
+[node name="Label" type="Label" parent="topbar/ColorRect3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 67.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+text = "WASD"
+
+[node name="Label2" type="Label" parent="topbar/ColorRect3"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 5.0
+offset_right = 218.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_w8dkx")
+text = "Move"
+
+[node name="ColorRect4" type="ColorRect" parent="topbar"]
+offset_left = 370.0
+offset_top = 6.0
+offset_right = 456.0
+offset_bottom = 30.0
+
+[node name="Label" type="Label" parent="topbar/ColorRect4"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 86.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+text = "Space"
+
+[node name="Label2" type="Label" parent="topbar/ColorRect4"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 4.0
+offset_right = 236.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_w8dkx")
+text = "Jump"
+
+[node name="gameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="gameOver"]
+offset_right = 1153.0
+offset_bottom = 664.0
+color = Color(0.203922, 0.278431, 0.34902, 0.52549)
+
+[node name="Label" type="Label" parent="gameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.0
+offset_top = -54.0
+offset_right = 454.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.69303, 0, 0.161379, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+theme_override_font_sizes/font_size = 100
+text = "Womp Womp"
+
+[node name="options" type="CanvasGroup" parent="gameOver"]
+unique_name_in_owner = true
+
+[node name="ColorRect3" type="ColorRect" parent="gameOver/options"]
+offset_left = 49.0
+offset_top = 530.0
+offset_right = 213.0
+offset_bottom = 596.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="gameOver/options/ColorRect3"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -1.0
+offset_right = 168.0
+offset_bottom = 61.0
+
+[node name="Label" type="Label" parent="gameOver/options/ColorRect3/ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 175.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+theme_override_font_sizes/font_size = 30
+text = "Enter"
+
+[node name="Label" type="Label" parent="gameOver/options/ColorRect3"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 20.0
+offset_right = 849.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("2_w8dkx")
+theme_override_font_sizes/font_size = 25
+text = "to try again"
+
+[node name="ColorRect4" type="ColorRect" parent="gameOver/options"]
+offset_left = 724.0
+offset_top = 534.0
+offset_right = 888.0
+offset_bottom = 600.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="gameOver/options/ColorRect4"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -1.0
+offset_right = 168.0
+offset_bottom = 61.0
+
+[node name="Label" type="Label" parent="gameOver/options/ColorRect4/ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 175.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+theme_override_font_sizes/font_size = 30
+text = "Shift"
+
+[node name="Label2" type="Label" parent="gameOver/options/ColorRect4"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 17.0
+offset_right = 848.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_w8dkx")
+theme_override_font_sizes/font_size = 25
+text = "to leave"
+
+[node name="settings_button" type="TextureButton" parent="."]
+offset_left = 1111.0
+offset_top = 11.0
+offset_right = 1151.0
+offset_bottom = 51.0
+focus_mode = 0
+texture_normal = ExtResource("4_x565s")
+texture_hover = ExtResource("5_8ntvr")
+
+[node name="settings" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(565, 255)
+
+[node name="ColorRect" type="ColorRect" parent="settings"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -153.0
+offset_right = 114.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.971902, 0.734003, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="settings/ColorRect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 23.0
+offset_right = 245.0
+offset_bottom = 143.0
+color = Color(0.906364, 0.589217, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="settings/ColorRect/ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 221.0
+offset_bottom = 111.0
+color = Color(0.954772, 0.715887, 0, 1)
+
+[node name="bgMusicButton" type="CheckButton" parent="settings"]
+unique_name_in_owner = true
+offset_left = -117.0
+offset_top = -107.0
+offset_right = 91.0
+offset_bottom = -76.0
+theme_override_colors/font_pressed_color = Color(0.813739, 0, 0.0732798, 1)
+theme_override_colors/font_color = Color(0.641333, 0.444601, 0.186024, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+disabled = true
+button_pressed = true
+text = "BG Music"
+
+[node name="sfxButton" type="CheckButton" parent="settings"]
+unique_name_in_owner = true
+offset_left = -116.0
+offset_top = -66.0
+offset_right = 92.0
+offset_bottom = -35.0
+theme_override_colors/font_pressed_color = Color(0.813739, 0, 0.0732798, 1)
+theme_override_colors/font_color = Color(0.641333, 0.444601, 0.186024, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+disabled = true
+button_pressed = true
+text = "SFX"
+
+[node name="Button" type="Button" parent="settings"]
+offset_left = -103.0
+offset_top = 74.0
+offset_right = 67.0
+offset_bottom = 122.0
+theme_override_colors/font_hover_color = Color(0.848873, 0.0332701, 0.142028, 1)
+theme_override_colors/font_color = Color(0.986849, 0.653816, 1.92523e-06, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+action_mode = 0
+text = "Quit"
+
+[connection signal="pressed" from="settings_button" to="." method="_on_texture_button_pressed"]
+[connection signal="toggled" from="settings/bgMusicButton" to="." method="_on_bg_music_button_toggled"]
+[connection signal="toggled" from="settings/sfxButton" to="." method="_on_sfx_button_toggled"]
+[connection signal="pressed" from="settings/Button" to="." method="_on_button_pressed"]

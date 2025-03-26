@@ -1,15 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://vd8uo1wp36yi"]
+[gd_scene load_steps=12 format=3 uid="uid://vd8uo1wp36yi"]
 
 [ext_resource type="Script" path="res://Map/map.gd" id="1_djte1"]
 [ext_resource type="Texture2D" uid="uid://ctbu63g484uqv" path="res://Map/barn_icon.png" id="1_ywldt"]
 [ext_resource type="Texture2D" uid="uid://df0br7rk7d7by" path="res://Map/barn_icon_hover.png" id="2_ect6c"]
 [ext_resource type="Texture2D" uid="uid://nv4lsunudrtb" path="res://Map/chicken1_top.png" id="3_p0vcf"]
+[ext_resource type="Texture2D" uid="uid://ceqprtbs4a4p7" path="res://Map/pond_icon.png" id="4_yuc36"]
+[ext_resource type="Texture2D" uid="uid://dp2fss2sxxnba" path="res://Map/placeholder.png" id="5_4qovy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3w57"]
+size = Vector2(184, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q4bt"]
+size = Vector2(103, 109)
 
 [sub_resource type="Curve2D" id="Curve2D_tk5xl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 543, 504, 0, 0, 0, 0, 518, 361, 0, 0, 0, 0, 594, 229, 0, 0, 0, 0, 535, 89)
+"points": PackedVector2Array(0, 0, 0, 0, 543, 504, 0, 0, 0, 0, 134, 360, 0, 0, 0, 0, 306, 173, 0, 0, 0, 0, 599, 295, 0, 0, 0, 0, 927, 141, 0, 0, 0, 0, 1044, 509)
 }
-point_count = 4
+point_count = 6
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8mic"]
+radius = 31.3923
+height = 96.7415
+
+[sub_resource type="GDScript" id="GDScript_m3hi7"]
+script/source = "extends Node
+
+		
+func load_resource(file_path):
+	if not ResourceLoader.has_cached(file_path):
+		return ResourceLoader.load(file_path, \"\")
+
+func save_resource(file_path, dict):
+	ResourceSaver.save(file_path, )
+"
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_djte1")
@@ -32,44 +56,152 @@ color = Color(0.384471, 0.476612, 0.15058, 1)
 
 [node name="foreground" type="CanvasLayer" parent="."]
 
-[node name="TextureButton" type="TextureButton" parent="foreground"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -74.0
-offset_top = -134.0
-offset_right = 31.0
-offset_bottom = -26.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("1_ywldt")
-texture_hover = ExtResource("2_ect6c")
+[node name="home" type="Area2D" parent="foreground"]
+unique_name_in_owner = true
+position = Vector2(550, 566)
 
-[node name="TextureButton2" type="TextureButton" parent="foreground"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -513.0
-offset_top = -354.0
-offset_right = -408.0
-offset_bottom = -246.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("1_ywldt")
-texture_hover = ExtResource("2_ect6c")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/home"]
+position = Vector2(-3, -26.5)
+shape = SubResource("RectangleShape2D_r3w57")
 
-[node name="Path2D" type="Path2D" parent="foreground"]
+[node name="BarnIcon" type="Sprite2D" parent="foreground/home"]
+unique_name_in_owner = true
+position = Vector2(-4, -24)
+texture = ExtResource("1_ywldt")
+
+[node name="BarnIconHover" type="Sprite2D" parent="foreground/home"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-3, -32)
+texture = ExtResource("2_ect6c")
+
+[node name="level1" type="Area2D" parent="foreground"]
+position = Vector2(100, 352)
+
+[node name="PondIcon" type="Sprite2D" parent="foreground/level1"]
+position = Vector2(6, 7)
+texture = ExtResource("4_yuc36")
+
+[node name="outline" type="Sprite2D" parent="foreground/level1"]
+visible = false
+position = Vector2(7, 11)
+scale = Vector2(1.26563, 1.25)
+texture = ExtResource("4_yuc36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/level1"]
+position = Vector2(3.5, 1.5)
+shape = SubResource("RectangleShape2D_5q4bt")
+
+[node name="level2" type="Area2D" parent="foreground"]
+position = Vector2(301, 139)
+
+[node name="outline" type="ColorRect" parent="foreground/level2"]
+visible = false
+offset_left = -54.0
+offset_top = -59.0
+offset_right = 61.0
+offset_bottom = 62.0
+color = Color(0.97308, 0, 0.258981, 1)
+
+[node name="Placeholder" type="Sprite2D" parent="foreground/level2"]
+position = Vector2(6, 8)
+texture = ExtResource("5_4qovy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/level2"]
+position = Vector2(3.5, 1.5)
+shape = SubResource("RectangleShape2D_5q4bt")
+
+[node name="level3" type="Area2D" parent="foreground"]
+position = Vector2(595, 332)
+
+[node name="outline" type="ColorRect" parent="foreground/level3"]
+visible = false
+offset_left = -54.0
+offset_top = -59.0
+offset_right = 61.0
+offset_bottom = 62.0
+color = Color(0.97308, 0, 0.258981, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/level3"]
+position = Vector2(3.5, 1.5)
+shape = SubResource("RectangleShape2D_5q4bt")
+
+[node name="Placeholder" type="Sprite2D" parent="foreground/level3"]
+position = Vector2(6, 8)
+texture = ExtResource("5_4qovy")
+
+[node name="level4" type="Area2D" parent="foreground"]
+position = Vector2(920, 107)
+
+[node name="outline" type="ColorRect" parent="foreground/level4"]
+visible = false
+offset_left = -54.0
+offset_top = -59.0
+offset_right = 61.0
+offset_bottom = 62.0
+color = Color(0.97308, 0, 0.258981, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/level4"]
+position = Vector2(3.5, 1.5)
+shape = SubResource("RectangleShape2D_5q4bt")
+
+[node name="Placeholder" type="Sprite2D" parent="foreground/level4"]
+position = Vector2(6, 8)
+texture = ExtResource("5_4qovy")
+
+[node name="level5" type="Area2D" parent="foreground"]
+position = Vector2(1041, 542)
+
+[node name="outline" type="ColorRect" parent="foreground/level5"]
+visible = false
+offset_left = -54.0
+offset_top = -59.0
+offset_right = 61.0
+offset_bottom = 62.0
+color = Color(0.97308, 0, 0.258981, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/level5"]
+position = Vector2(3.5, 1.5)
+shape = SubResource("RectangleShape2D_5q4bt")
+
+[node name="Placeholder" type="Sprite2D" parent="foreground/level5"]
+position = Vector2(6, 8)
+texture = ExtResource("5_4qovy")
+
+[node name="mapPath1" type="Path2D" parent="foreground"]
+unique_name_in_owner = true
 curve = SubResource("Curve2D_tk5xl")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="foreground/Path2D"]
+[node name="follower" type="PathFollow2D" parent="foreground/mapPath1"]
+unique_name_in_owner = true
 position = Vector2(543, 504)
-rotation = -1.74387
+rotation = -2.80307
 
-[node name="Chicken1Top" type="Sprite2D" parent="foreground/Path2D/PathFollow2D"]
-position = Vector2(1, -8)
+[node name="chickenMapPiece" type="CharacterBody2D" parent="foreground/mapPath1/follower"]
+unique_name_in_owner = true
+
+[node name="Chicken1Top" type="Sprite2D" parent="foreground/mapPath1/follower/chickenMapPiece"]
+position = Vector2(1.00006, -8)
+rotation = 1.85023
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_p0vcf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/mapPath1/follower/chickenMapPiece"]
+position = Vector2(-0.106086, -6.32367)
+shape = SubResource("CapsuleShape2D_g8mic")
+
+[node name="Saver" type="Node" parent="."]
+script = SubResource("GDScript_m3hi7")
+
+[connection signal="body_entered" from="foreground/home" to="." method="_on_home_body_entered"]
+[connection signal="body_exited" from="foreground/home" to="." method="_on_home_body_exited"]
+[connection signal="body_entered" from="foreground/level1" to="." method="_on_level_1_body_entered"]
+[connection signal="body_exited" from="foreground/level1" to="." method="_on_level_1_body_exited"]
+[connection signal="body_entered" from="foreground/level2" to="." method="_on_level_2_body_entered"]
+[connection signal="body_exited" from="foreground/level2" to="." method="_on_level_2_body_exited"]
+[connection signal="body_entered" from="foreground/level3" to="." method="_on_level_3_body_entered"]
+[connection signal="body_exited" from="foreground/level3" to="." method="_on_level_3_body_exited"]
+[connection signal="body_entered" from="foreground/level4" to="." method="_on_level_4_body_entered"]
+[connection signal="body_exited" from="foreground/level4" to="." method="_on_level_4_body_exited"]
+[connection signal="body_entered" from="foreground/level5" to="." method="_on_level_5_body_entered"]
+[connection signal="body_exited" from="foreground/level5" to="." method="_on_level_5_body_exited"]

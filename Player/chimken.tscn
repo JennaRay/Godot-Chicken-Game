@@ -179,4 +179,9 @@ rotation = 0.1955
 shape = SubResource("CircleShape2D_esbro")
 debug_color = Color(0.992922, 0, 0.245156, 0.42)
 
+[node name="kickBackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="jumpTimer" to="." method="_on_jump_timer_timeout"]

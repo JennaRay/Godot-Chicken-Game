@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctbfsq4qbr8pg"]
+[gd_scene load_steps=7 format=3 uid="uid://ctbfsq4qbr8pg"]
 
 [ext_resource type="Script" path="res://Antagonist/antagonist.gd" id="1_1tu6u"]
-[ext_resource type="Texture2D" uid="uid://c1arcmb8ll7oa" path="res://Antagonist/placeholder.png" id="1_vodcd"]
+[ext_resource type="Texture2D" uid="uid://ceflpim3tqukk" path="res://Antagonist/duck/pixil-frame-0.png" id="2_bkx27"]
+[ext_resource type="Texture2D" uid="uid://5w07qpoc774h" path="res://Antagonist/duck/pixil-frame-1.png" id="3_nuuo6"]
+[ext_resource type="Texture2D" uid="uid://c2w6w2m06x842" path="res://Antagonist/duck/pixil-frame-2.png" id="4_37mbe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yscxa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_vodcd")
+"texture": ExtResource("2_bkx27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nuuo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_37mbe")
 }],
 "loop": true,
 "name": &"default",
@@ -41,7 +49,17 @@ autostart = true
 wait_time = 0.5
 one_shot = true
 
+[node name="upWait" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="downWait" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="area_entered" from="interactBox" to="." method="_on_interact_box_area_entered"]
 [connection signal="body_entered" from="interactBox" to="." method="_on_interact_box_body_entered"]
 [connection signal="timeout" from="upTimer" to="." method="_on_up_timer_timeout"]
 [connection signal="timeout" from="downTimer" to="." method="_on_down_timer_timeout"]
+[connection signal="timeout" from="upWait" to="." method="_on_up_wait_timeout"]
+[connection signal="timeout" from="downWait" to="." method="_on_down_wait_timeout"]

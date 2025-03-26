@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bg3vhm8xme0a4"]
+
+[ext_resource type="Script" path="res://Antagonist/antagonist_2.gd" id="1_b4rmw"]
+[ext_resource type="Texture2D" uid="uid://0h541wqv35tc" path="res://Antagonist/goose/goose-walkl1.png" id="2_5ohs1"]
+[ext_resource type="Texture2D" uid="uid://d1t0huoqg3sh7" path="res://Antagonist/goose/goose-walkl2.png" id="3_qgnx6"]
+[ext_resource type="Texture2D" uid="uid://tn5tsl46xnu2" path="res://Antagonist/goose/goose-walkr1.png" id="4_uudjc"]
+[ext_resource type="Texture2D" uid="uid://ddqnpsvrr3rup" path="res://Antagonist/goose/goose-walkr2.png" id="5_l8in8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yscxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5ohs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qgnx6")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uudjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l8in8")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7pn78"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu8qa"]
+size = Vector2(22.5, 11)
+
+[node name="antagonist" type="CharacterBody2D"]
+script = ExtResource("1_b4rmw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -10)
+sprite_frames = SubResource("SpriteFrames_yscxa")
+animation = &"walk_left"
+
+[node name="interactBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactBox"]
+shape = SubResource("CircleShape2D_7pn78")
+debug_color = Color(0.915897, 0.234659, 0.432544, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="interactBox"]
+position = Vector2(-18, -40)
+shape = SubResource("RectangleShape2D_yu8qa")
+
+[node name="upTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="downTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="interactBox" to="." method="_on_interact_box_area_entered"]
+[connection signal="body_entered" from="interactBox" to="." method="_on_interact_box_body_entered"]
+[connection signal="timeout" from="upTimer" to="." method="_on_up_timer_timeout"]
+[connection signal="timeout" from="downTimer" to="." method="_on_down_timer_timeout"]

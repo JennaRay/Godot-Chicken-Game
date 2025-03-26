@@ -1,0 +1,210 @@
+[gd_scene load_steps=16 format=4 uid="uid://ce5ppeb2uclch"]
+
+[ext_resource type="Texture2D" uid="uid://caxnnrf2jackm" path="res://Barn/pixilart-sprite.png" id="1_ahixl"]
+[ext_resource type="Script" path="res://main.gd" id="1_eauob"]
+[ext_resource type="PackedScene" uid="uid://dh0p16yaxw5ya" path="res://Player/chimken.tscn" id="2_x7dip"]
+[ext_resource type="Texture2D" uid="uid://cj5g80k1qu803" path="res://Barn/hay.png" id="3_gy1lo"]
+[ext_resource type="Script" path="res://hud.gd" id="4_47nhf"]
+[ext_resource type="PackedScene" uid="uid://dyadulnnnejok" path="res://Inventory/inventory.tscn" id="5_6wdyo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flb31"]
+texture = ExtResource("1_ahixl")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mfje1"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_flb31")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iuux"]
+size = Vector2(381.5, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uecgh"]
+size = Vector2(641, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6d2y"]
+size = Vector2(120, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4fvv"]
+size = Vector2(126, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1vv0"]
+size = Vector2(113, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkgba"]
+size = Vector2(105.5, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q641u"]
+size = Vector2(1167, 98)
+
+[node name="barn" type="Node2D"]
+script = ExtResource("1_eauob")
+
+[node name="background" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="background"]
+tile_map_data = PackedByteArray("AAAGAAAAAAAKAAAAAAAFAAAAAAAKAAAAAAAEAAAAAAAKAAAAAAADAAAAAAAKAAAAAAACAAAAAAAKAAAAAAABAAAAAAAJAAAAAAAHAAAAAAAKAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAAAAAAKAAAAAAABAAEAAAAIAAAAAAAJAAIAAAABAAAAAAAJAAEAAAAMAAAAAAAAAAEAAAAEAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAABAAAAAAAGAAEAAAABAAAAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAAGAAIAAAABAAAAAAAFAAIAAAACAAAAAAAEAAIAAAABAAAAAAADAAIAAAABAAAAAAAJAAAAAAALAAAAAAAKAAEAAAAFAAAAAAAKAAIAAAAGAAAAAAAJAAMAAAABAAAAAAAIAAMAAAABAAAAAAAHAAMAAAABAAAAAAAGAAMAAAABAAAAAAAFAAMAAAABAAAAAAAEAAMAAAABAAAAAAADAAMAAAABAAAAAAACAAMAAAABAAAAAAABAAMAAAABAAAAAAABAAQAAAADAAAAAAACAAQAAAADAAAAAAADAAQAAAADAAAAAAAFAAQAAAADAAAAAAAGAAQAAAADAAAAAAAHAAQAAAADAAAAAAAIAAQAAAADAAAAAAAJAAQAAAADAAAAAAAKAAMAAAAGAAAAAAAKAAQAAAAGAAAAAAAAAAIAAAAHAAAAAAAAAAMAAAAHAAAAAAAAAAQAAAAHAAAAAAAAAAUAAAAHAAAAAAAAAAYAAAAHAAAAAAAAAAcAAAAHAAAAAAAKAAUAAAAGAAAAAAAKAAYAAAAGAAAAAAAKAAcAAAAGAAAAAAAKAAgAAAAGAAAAAAAEAAQAAAABAAAAAAAEAAUAAAABAAAAAAADAAUAAAABAAAAAAACAAUAAAABAAAAAAABAAUAAAABAAAAAAABAAYAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAACAAYAAAACAAAAAAADAAYAAAABAAAAAAAEAAYAAAABAAAAAAAEAAcAAAABAAAAAAADAAcAAAABAAAAAAAFAAcAAAANAAAAAAAFAAYAAAANAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAABAAAAAAAJAAYAAAABAAAAAAAJAAcAAAABAAAAAAAIAAcAAAABAAAAAAAHAAcAAAABAAAAAAAGAAcAAAANAAAAAAAGAAYAAAANAAAAAAAHAAYAAAABAAAAAAAIAAYAAAABAAAAAAAJAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAADAAgAAAAAAAAAAAACAAgAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAgAAAAHAAAAAAA=")
+tile_set = SubResource("TileSet_mfje1")
+
+[node name="foreground" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="platforms" type="StaticBody2D" parent="foreground"]
+
+[node name="topfloorLeft" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(319.25, 565.5)
+shape = SubResource("RectangleShape2D_8iuux")
+one_way_collision = true
+
+[node name="topfloorRight" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(960.5, 564)
+shape = SubResource("RectangleShape2D_uecgh")
+one_way_collision = true
+
+[node name="topWindow" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(703, 374)
+shape = SubResource("RectangleShape2D_b6d2y")
+one_way_collision = true
+
+[node name="bottomWindow" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(319, 890)
+shape = SubResource("RectangleShape2D_p4fvv")
+one_way_collision = true
+
+[node name="platform1" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(497, 727)
+shape = SubResource("RectangleShape2D_o1vv0")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="foreground/platforms/platform1"]
+offset_left = -56.0
+offset_top = -12.0
+offset_right = 57.0
+offset_bottom = 12.0
+color = Color(0.732549, 0.529583, 0.336039, 1)
+
+[node name="platform2" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(567, 625)
+shape = SubResource("RectangleShape2D_o1vv0")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="foreground/platforms/platform2"]
+offset_left = -56.0
+offset_top = -12.0
+offset_right = 57.0
+offset_bottom = 12.0
+color = Color(0.732549, 0.529583, 0.336039, 1)
+
+[node name="platform3" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(448, 823)
+shape = SubResource("RectangleShape2D_o1vv0")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="foreground/platforms/platform3"]
+offset_left = -56.0
+offset_top = -12.0
+offset_right = 57.0
+offset_bottom = 12.0
+color = Color(0.732549, 0.529583, 0.336039, 1)
+
+[node name="crate2" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(830, 482)
+shape = SubResource("RectangleShape2D_nkgba")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="foreground/platforms/crate2"]
+position = Vector2(1.25, -0.99999)
+scale = Vector2(0.847656, 0.765625)
+texture = ExtResource("3_gy1lo")
+
+[node name="crate4" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(185, 485)
+shape = SubResource("RectangleShape2D_nkgba")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="foreground/platforms/crate4"]
+position = Vector2(1.25, -0.99999)
+scale = Vector2(0.847656, 0.765625)
+texture = ExtResource("3_gy1lo")
+
+[node name="crate5" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(290, 483)
+shape = SubResource("RectangleShape2D_nkgba")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="foreground/platforms/crate5"]
+position = Vector2(1.25, -0.99999)
+scale = Vector2(0.847656, 0.765625)
+texture = ExtResource("3_gy1lo")
+
+[node name="crate3" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(179, 393)
+shape = SubResource("RectangleShape2D_nkgba")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="foreground/platforms/crate3"]
+position = Vector2(1.25, -0.99999)
+scale = Vector2(0.847656, 0.765625)
+texture = ExtResource("3_gy1lo")
+
+[node name="crate" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(422.5, 997)
+shape = SubResource("RectangleShape2D_nkgba")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="foreground/platforms/crate"]
+position = Vector2(1.25, -0.99999)
+scale = Vector2(0.847656, 0.765625)
+texture = ExtResource("3_gy1lo")
+
+[node name="floor" type="CollisionShape2D" parent="foreground/platforms"]
+position = Vector2(701.5, 1106)
+shape = SubResource("RectangleShape2D_q641u")
+
+[node name="player" parent="foreground" instance=ExtResource("2_x7dip")]
+unique_name_in_owner = true
+position = Vector2(698, 327)
+scale = Vector2(0.5, 0.5)
+collision_layer = 19
+collision_mask = 19
+
+[node name="Camera2D" type="Camera2D" parent="foreground/player"]
+position = Vector2(-2.08331, -6.24991)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_47nhf")
+
+[node name="Inventory" parent="HUD" instance=ExtResource("5_6wdyo")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(596, 69)
+
+[node name="promptLabel" type="Label" parent="HUD"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -107.5
+offset_right = 31.5
+offset_bottom = -84.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "press 'E'"

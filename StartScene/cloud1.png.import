@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://c4rb14ektpk20"
+path="res://.godot/imported/cloud1.png-22a6d0cad662fa0bf861d17da98aec3d.image"
+
+[deps]
+
+source_file="res://StartScene/cloud1.png"
+dest_files=["res://.godot/imported/cloud1.png-22a6d0cad662fa0bf861d17da98aec3d.image"]
+
+[params]
+

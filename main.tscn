@@ -1,24 +1,202 @@
-[gd_scene load_steps=8 format=3 uid="uid://cicvvujfbscqs"]
+[gd_scene load_steps=39 format=4 uid="uid://cicvvujfbscqs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4lda3"]
 [ext_resource type="PackedScene" uid="uid://dh0p16yaxw5ya" path="res://Player/chimken.tscn" id="1_5jujb"]
-[ext_resource type="PackedScene" uid="uid://dyadulnnnejok" path="res://Inventory/inventory.tscn" id="3_tjjlu"]
+[ext_resource type="Texture2D" uid="uid://beeuf8408jsnb" path="res://StartScene/tileset.png" id="2_o7rlm"]
+[ext_resource type="Script" path="res://StartScene/sky.gd" id="2_veid3"]
+[ext_resource type="Texture2D" uid="uid://doyps7pugniye" path="res://StartScene/barn.png" id="3_xqryk"]
 [ext_resource type="PackedScene" uid="uid://c0jyggcb4wdjx" path="res://Inventory/item.tscn" id="4_tcv4s"]
-[ext_resource type="PackedScene" uid="uid://ctbfsq4qbr8pg" path="res://Antagonist/antagonist.tscn" id="6_gcrm8"]
-[ext_resource type="Texture2D" uid="uid://ctbu63g484uqv" path="res://Map/barn_icon.png" id="6_i3a6x"]
+[ext_resource type="Texture2D" uid="uid://c58dypv0umtvu" path="res://StartScene/cloud1texture.png" id="4_twpx5"]
+[ext_resource type="Texture2D" uid="uid://b1mqrp2w835lj" path="res://StartScene/cloud2texture.png" id="5_fnkoc"]
+[ext_resource type="Texture2D" uid="uid://bnco3bm1dl7fc" path="res://StartScene/cloud3texture.png" id="6_u242k"]
+[ext_resource type="PackedScene" uid="uid://1cgpqwvyjbjw" path="res://StartScene/cloud.tscn" id="7_4wnoa"]
+[ext_resource type="Texture2D" uid="uid://cha31talxlxq6" path="res://Barn/atlast.png" id="7_kk7qw"]
+[ext_resource type="Texture2D" uid="uid://cj5g80k1qu803" path="res://Barn/hay.png" id="12_tayvd"]
+[ext_resource type="PackedScene" uid="uid://5y0fc4ntavwd" path="res://Barn/workbench.tscn" id="13_86vsi"]
+[ext_resource type="PackedScene" uid="uid://cu58gvnbqropm" path="res://Inventory/prompt.tscn" id="14_g0bbl"]
+[ext_resource type="PackedScene" uid="uid://4erdjqt75pqx" path="res://hud.tscn" id="15_hmit2"]
+
+[sub_resource type="Curve2D" id="Curve2D_0ivxw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -872, -327, 0, 0, 0, 0, -861, 259)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1u0v"]
+size = Vector2(4396.5, 868)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1otd"]
+texture = ExtResource("7_kk7qw")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -53, 64, -53, 64, 64, -64, 64)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(25, -64, 64, -64, 64, 64, 23, 64)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, -19, -64, -24, 64, -64, 64)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, -23, -64, -23, 64, -64, 64)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(25, -64, 64, -64, 64, 64, 23, 64, 22, 64)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, -41, -64, -2, -64, -64, 64)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -46, 64, -4, 2, 64, -39, 64)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 76, -1, -64, 0, -64, -47)
+11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-83, -17, -75, -53, 35, 64, -1, 64)
+12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -64, 50, -64, 76, 2, 75, 84)
+13:0/0 = 0
+28:0/0 = 0
+14:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4687"]
+resource_name = "ground"
+texture = ExtResource("2_o7rlm")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s587u"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/10 = SubResource("TileSetAtlasSource_n4687")
+sources/0 = SubResource("TileSetAtlasSource_s1otd")
+tile_proxies/coords_level = [[0, Vector2i(0, 0)], [5, Vector2i(0, 0)], [0, Vector2i(1, 0)], [5, Vector2i(1, 0)], [0, Vector2i(2, 0)], [5, Vector2i(2, 0)], [3, Vector2i(0, 0)], [5, Vector2i(3, 0)], [4, Vector2i(0, 0)], [5, Vector2i(4, 0)], [5, Vector2i(0, 0)], [7, Vector2i(0, 0)], [5, Vector2i(1, 0)], [7, Vector2i(1, 0)], [5, Vector2i(2, 0)], [7, Vector2i(2, 0)], [5, Vector2i(3, 0)], [7, Vector2i(3, 0)], [5, Vector2i(4, 0)], [7, Vector2i(4, 0)], [6, Vector2i(0, 0)], [7, Vector2i(5, 0)], [7, Vector2i(0, 0)], [10, Vector2i(0, 0)], [7, Vector2i(1, 0)], [10, Vector2i(1, 0)], [7, Vector2i(2, 0)], [10, Vector2i(2, 0)], [7, Vector2i(3, 0)], [10, Vector2i(3, 0)], [7, Vector2i(4, 0)], [10, Vector2i(4, 0)], [7, Vector2i(5, 0)], [10, Vector2i(5, 0)], [8, Vector2i(0, 0)], [10, Vector2i(6, 0)], [9, Vector2i(0, 0)], [10, Vector2i(7, 0)]]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct1sx"]
-size = Vector2(183.261, 15.1724)
+size = Vector2(206.46, 12.7931)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1pf5"]
+size = Vector2(95, 547)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00jg4"]
+size = Vector2(380, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0dhn"]
+size = Vector2(643, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqcqt"]
+size = Vector2(128, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dstp2"]
+size = Vector2(77.5, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e5i0a"]
+a = Vector2(77, 36)
+b = Vector2(-87, -45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2huu"]
+size = Vector2(168, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yll1"]
+size = Vector2(60, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_252b1"]
+size = Vector2(63, 55)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kw6wr"]
+radius = 152.029
+height = 311.997
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cf3c6"]
+size = Vector2(108, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grhnl"]
+size = Vector2(126, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lshlp"]
+size = Vector2(127, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tsjj"]
+size = Vector2(124, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj70l"]
+size = Vector2(138, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y15t"]
+size = Vector2(266.4, 193.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy1dn"]
+size = Vector2(123, 149)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_4lda3")
 
 [node name="Background" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
-offset_right = 2305.0
+[node name="sky" type="CanvasLayer" parent="Background"]
+unique_name_in_owner = true
+follow_viewport_enabled = true
+script = ExtResource("2_veid3")
+
+[node name="ColorRect" type="ColorRect" parent="Background/sky"]
+offset_left = -747.0
+offset_top = -348.0
+offset_right = 3342.0
 offset_bottom = 649.0
 color = Color(0.512077, 0.829917, 0.888613, 1)
+
+[node name="cloudSpawnPath" type="Path2D" parent="Background/sky"]
+curve = SubResource("Curve2D_0ivxw")
+
+[node name="cloudSpawner" type="PathFollow2D" parent="Background/sky/cloudSpawnPath"]
+unique_name_in_owner = true
+position = Vector2(-872, -327)
+rotation = 1.55203
+
+[node name="cloudTimer" type="Timer" parent="Background/sky"]
+wait_time = 3.0
+autostart = true
+
+[node name="skyBox" type="Area2D" parent="Background/sky"]
+unique_name_in_owner = true
+collision_layer = 129
+collision_mask = 129
+priority = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/sky/skyBox"]
+position = Vector2(1128.75, 87)
+shape = SubResource("RectangleShape2D_f1u0v")
+
+[node name="cloud1" parent="Background/sky" instance=ExtResource("7_4wnoa")]
+position = Vector2(-5, 89)
+
+[node name="Cloud1" type="Sprite2D" parent="Background/sky/cloud1"]
+position = Vector2(486, 100)
+texture = ExtResource("4_twpx5")
+
+[node name="cloud2" parent="Background/sky" instance=ExtResource("7_4wnoa")]
+position = Vector2(522, 170)
+
+[node name="Cloud2" type="Sprite2D" parent="Background/sky/cloud2"]
+position = Vector2(-549, -75)
+texture = ExtResource("5_fnkoc")
+
+[node name="cloud3" parent="Background/sky" instance=ExtResource("7_4wnoa")]
+position = Vector2(758, 202)
+
+[node name="Cloud4" type="Sprite2D" parent="Background/sky/cloud3"]
+position = Vector2(-5, -7)
+texture = ExtResource("6_u242k")
+
+[node name="cloud4" parent="Background/sky" instance=ExtResource("7_4wnoa")]
+position = Vector2(1700, 128)
+
+[node name="Cloud3" type="Sprite2D" parent="Background/sky/cloud4"]
+position = Vector2(-6, -6)
+texture = ExtResource("6_u242k")
 
 [node name="Foreground" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -26,44 +204,291 @@ follow_viewport_enabled = true
 [node name="ground" type="StaticBody2D" parent="Foreground"]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="Foreground/ground"]
-offset_left = -467.0
-offset_top = 501.0
-offset_right = 2365.0
-offset_bottom = 968.0
-color = Color(0.223855, 0.344092, 0.198801, 1)
+[node name="TileMapLayer" type="TileMapLayer" parent="Foreground/ground"]
+tile_map_data = PackedByteArray("AAAAAAQACgADAAAAAAABAAQACgADAAAAAAACAAQACgADAAAAAAADAAQACgADAAAAAAAEAAQACgADAAAAAAAFAAQACgADAAAAAAAGAAQACgADAAAAAAAHAAQACgADAAAAAAAIAAQACgADAAAAAAAJAAQACgADAAAAAAAKAAQACgADAAAAAAALAAQACgADAAAAAAAMAAQACgADAAAAAAAAAAUACgACAAAAAAABAAUACgACAAAAAAACAAUACgACAAAAAAADAAUACgACAAAAAAAEAAUACgACAAAAAAAFAAUACgACAAAAAAAGAAUACgACAAAAAAAHAAUACgAAAAAAAAAIAAUACgACAAAAAAAJAAUACgACAAAAAAAKAAUACgACAAAAAAALAAUACgACAAAAAAAMAAUACgACAAAAAAD//wQACgAEAAAAAAD+/wQACgADAAAAAAD9/wQACgADAAAAAAD//wUACgACAAAAAAD+/wUACgACAAAAAAD9/wUACgACAAAAAAABAAYACgACAAAAAAACAAYACgACAAAAAAAAAAYACgACAAAAAAD//wYACgACAAAAAAD+/wYACgACAAAAAAD9/wYACgABAAAAAAADAAYACgACAAAAAAAEAAYACgACAAAAAAAFAAYACgACAAAAAAAGAAYACgACAAAAAAAHAAYACgACAAAAAAAIAAYACgACAAAAAAAJAAYACgACAAAAAAAKAAYACgACAAAAAAALAAYACgACAAAAAAAMAAYACgACAAAAAAANAAUACgACAAAAAAANAAYACgACAAAAAAAOAAYACgACAAAAAAAOAAUACgACAAAAAAAPAAUACgACAAAAAAAQAAUACgABAAAAAAAQAAYACgACAAAAAAARAAYACgACAAAAAAARAAUACgACAAAAAAASAAYACgACAAAAAAASAAUACgACAAAAAAAPAAYACgACAAAAAAANAAQACgADAAAAAAAOAAQACgADAAAAAAAPAAQACgADAAAAAAAQAAQACgADAAAAAAARAAQACgADAAAAAAASAAQACgADAAAAAAD8/wUACgACAAAAAAD7/wUACgACAAAAAAD6/wUACgACAAAAAAD8/wYACgACAAAAAAD7/wYACgACAAAAAAD6/wYACgACAAAAAAD8/wQACgADAAAAAAD7/wQACgADAAAAAAD6/wQACgADAAAAAAATAAQACgADAAAAAAAUAAQACgAEAAAAAAAVAAQACgADAAAAAAAWAAQACgADAAAAAAAXAAQACgADAAAAAAAYAAQACgADAAAAAAAZAAQACgADAAAAAAATAAUACgACAAAAAAATAAYACgACAAAAAAAUAAYACgACAAAAAAAUAAUACgACAAAAAAAVAAUACgACAAAAAAAWAAUACgACAAAAAAAXAAUACgACAAAAAAAYAAUACgACAAAAAAAZAAUACgACAAAAAAAZAAYACgACAAAAAAAYAAYACgACAAAAAAAXAAYACgACAAAAAAAWAAYACgACAAAAAAAVAAYACgACAAAAAAD//wMACgAHAAAAAAAAAAMACgAFAAAAAAABAAMACgAFAAAAAAACAAMACgAFAAAAAAADAAMACgAFAAAAAAAEAAMACgAFAAAAAAAFAAMACgAFAAAAAAAGAAMACgAFAAAAAAAHAAMACgAFAAAAAAAIAAMACgAFAAAAAAAJAAMACgAFAAAAAAAKAAMACgAFAAAAAAALAAMACgAFAAAAAAAMAAMACgAFAAAAAAANAAMACgAFAAAAAAAOAAMACgAFAAAAAAAPAAMACgAFAAAAAAAQAAMACgAFAAAAAAARAAMACgAFAAAAAAASAAMACgAFAAAAAAAUAAMACgAGAAAAAAATAAMACgAFAAAAAAAhAAUAAAAAAAAAAAAiAAUAAAAAAAAAAAAjAAUAAAAAAAAAAAAkAAUAAAAAAAAAAAAlAAUAAAAAAAAAAAAmAAUAAAAAAAAAAAAhAAMAAAABAAAAAAAhAAQAAAABAAAAAAAiAAQAAAABAAAAAAAiAAMAAAABAAAAAAAiAAIAAAABAAAAAAAjAAIAAAABAAAAAAAjAAMAAAABAAAAAAAjAAQAAAABAAAAAAAkAAQAAAABAAAAAAAkAAMAAAACAAAAAAAkAAIAAAABAAAAAAAlAAIAAAABAAAAAAAlAAMAAAABAAAAAAAlAAQAAAABAAAAAAAmAAQAAAABAAAAAAAmAAMAAAABAAAAAAAmAAIAAAABAAAAAAAoAAMAAAANAAAAAAAnAAMAAAANAAAAAAAnAAQAAAANAAAAAAAoAAQAAAANAAAAAAApAAQAAAABAAAAAAApAAMAAAABAAAAAAAnAAUAAAAAAAAAAAAoAAUAAAAAAAAAAAApAAUAAAAAAAAAAAAqAAQAAAABAAAAAAAqAAUAAAAAAAAAAAAgAAQAAAAHAAAAAAAgAAUAAAAHAAAAAAAgAAMAAAAHAAAAAAAhAAIAAAAIAAAAAAAgAAIAAAAEAAAAAAAhAAEAAAAJAAAAAAAiAAEAAAAKAAAAAAAjAAEAAAAKAAAAAAAjAAAAAAAHAAAAAAArAAUAAAAAAAAAAAAsAAUAAAAAAAAAAAAjAP//AAAHAAAAAAAtAAUAAAAGAAAAAAAtAAQAAAAGAAAAAAAtAAMAAAAGAAAAAAAtAAIAAAAGAAAAAAArAAQAAAABAAAAAAAsAAQAAAABAAAAAAAsAAMAAAABAAAAAAAsAAIAAAABAAAAAAArAAIAAAABAAAAAAArAAMAAAABAAAAAAAqAAMAAAABAAAAAAAqAAIAAAABAAAAAAApAAIAAAABAAAAAAAoAAIAAAABAAAAAAAnAAIAAAABAAAAAAAkAAEAAAADAAAAAAAlAAEAAAADAAAAAAAoAAEAAAADAAAAAAApAAEAAAADAAAAAAAqAAEAAAADAAAAAAArAAEAAAADAAAAAAAsAAEAAAADAAAAAAAmAAEAAAADAAAAAAAnAAEAAAABAAAAAAAkAAAAAAABAAAAAAAlAAAAAAABAAAAAAAmAAAAAAABAAAAAAAnAAAAAAABAAAAAAAoAAAAAAABAAAAAAApAAAAAAABAAAAAAAqAAAAAAABAAAAAAArAAAAAAABAAAAAAAsAAAAAAABAAAAAAAsAP//AAABAAAAAAArAP//AAABAAAAAAAqAP//AAABAAAAAAApAP//AAABAAAAAAAoAP//AAABAAAAAAAnAP//AAABAAAAAAAmAP//AAABAAAAAAAlAP//AAABAAAAAAAkAP//AAABAAAAAAAkAP7/AAABAAAAAAAlAP7/AAABAAAAAAAmAP7/AAABAAAAAAAnAP7/AAABAAAAAAAoAP7/AAACAAAAAAApAP7/AAABAAAAAAAqAP7/AAABAAAAAAArAP7/AAABAAAAAAAsAP7/AAABAAAAAAAjAP7/AAAHAAAAAAAtAAEAAAAGAAAAAAAtAAAAAAAGAAAAAAAtAP//AAAGAAAAAAAtAP7/AAAGAAAAAAAsAP3/AAAMAAAAAAAtAP3/AAAFAAAAAAAjAP3/AAAEAAAAAAAkAP3/AAAIAAAAAAAkAPz/AAAJAAAAAAAlAPz/AAAKAAAAAAAmAPz/AAAKAAAAAAAnAPz/AAAKAAAAAAAoAPz/AAAKAAAAAAApAPz/AAAKAAAAAAAqAPz/AAAKAAAAAAArAPz/AAAKAAAAAAAsAPz/AAALAAAAAAAlAP3/AAABAAAAAAAmAP3/AAABAAAAAAAnAP3/AAABAAAAAAAoAP3/AAABAAAAAAApAP3/AAABAAAAAAAqAP3/AAABAAAAAAArAP3/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_s587u")
 
 [node name="groundCollision" type="CollisionShape2D" parent="Foreground/ground"]
-position = Vector2(1039, 575.333)
+position = Vector2(1120, 586.833)
 scale = Vector2(14.5694, -9.6666)
 shape = SubResource("RectangleShape2D_ct1sx")
 debug_color = Color(0.986632, 0, 0.321576, 0.42)
 
-[node name="item" parent="Foreground" instance=ExtResource("4_tcv4s")]
-position = Vector2(-35, 457)
+[node name="wall" type="CollisionShape2D" parent="Foreground/ground"]
+position = Vector2(-90.5, 263.5)
+shape = SubResource("RectangleShape2D_i1pf5")
+debug_color = Color(0.276629, 0.631853, 3.85046e-07, 0.42)
 
-[node name="item2" parent="Foreground" instance=ExtResource("4_tcv4s")]
-position = Vector2(576, 454)
+[node name="wall2" type="CollisionShape2D" parent="Foreground/ground"]
+position = Vector2(2650, 266)
+shape = SubResource("RectangleShape2D_i1pf5")
+debug_color = Color(0.276629, 0.631853, 3.85046e-07, 0.42)
 
-[node name="antagonist" parent="Foreground" instance=ExtResource("6_gcrm8")]
-position = Vector2(884, 453)
+[node name="barn platform1" type="CollisionShape2D" parent="Foreground/ground"]
+position = Vector2(4803, 175.5)
+shape = SubResource("RectangleShape2D_00jg4")
+one_way_collision = true
 
-[node name="BarnIcon" type="Sprite2D" parent="Foreground"]
-position = Vector2(1945, 286)
-scale = Vector2(4.45238, 4.25)
-texture = ExtResource("6_i3a6x")
+[node name="barn platform2" type="CollisionShape2D" parent="Foreground/ground"]
+position = Vector2(5442.5, 173)
+shape = SubResource("RectangleShape2D_q0dhn")
+one_way_collision = true
+
+[node name="hay" type="CollisionShape2D" parent="Foreground/ground"]
+position = Vector2(22, 474.5)
+shape = SubResource("RectangleShape2D_sqcqt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/ground/hay"]
+position = Vector2(-1, 1.5)
+texture = ExtResource("12_tayvd")
+
+[node name="outsideBarn" type="Sprite2D" parent="Foreground"]
+position = Vector2(2239, 218)
+texture = ExtResource("3_xqryk")
+
+[node name="platform1" type="StaticBody2D" parent="Foreground/outsideBarn"]
+position = Vector2(-2239, -218)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/outsideBarn/platform1"]
+position = Vector2(2402.25, 455)
+shape = SubResource("RectangleShape2D_dstp2")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Foreground/outsideBarn/platform1"]
+offset_left = 2362.0
+offset_top = 448.0
+offset_right = 2442.0
+offset_bottom = 462.0
+
+[node name="platform2" type="StaticBody2D" parent="Foreground/outsideBarn"]
+position = Vector2(184, 81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/outsideBarn/platform2"]
+shape = SubResource("SegmentShape2D_e5i0a")
+one_way_collision = true
+
+[node name="platform3" type="StaticBody2D" parent="Foreground/outsideBarn"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/outsideBarn/platform3"]
+position = Vector2(-88, -1)
+shape = SubResource("RectangleShape2D_n2huu")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Foreground/outsideBarn/platform3/CollisionShape2D"]
+offset_left = -83.0
+offset_top = -10.0
+offset_right = 84.0
+offset_bottom = 8.0
+color = Color(0.64011, 0.0341089, 0.156806, 1)
+
+[node name="platform4" type="StaticBody2D" parent="Foreground/outsideBarn"]
+position = Vector2(-98, -103)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/outsideBarn/platform4"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4yll1")
+one_way_collision = true
+
+[node name="barnWindow" type="Area2D" parent="Foreground/outsideBarn"]
+unique_name_in_owner = true
+position = Vector2(-98, -140)
+collision_layer = 16
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/outsideBarn/barnWindow"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_252b1")
+
+[node name="roof" type="StaticBody2D" parent="Foreground/outsideBarn"]
+position = Vector2(-91, -42)
+
+[node name="roof" type="CollisionShape2D" parent="Foreground/outsideBarn/roof"]
+position = Vector2(-10, -22)
+rotation = -0.00384223
+shape = SubResource("CapsuleShape2D_kw6wr")
+one_way_collision = true
+
+[node name="barn" type="CanvasLayer" parent="Foreground"]
+
+[node name="insideWindow" type="Area2D" parent="Foreground/barn"]
+unique_name_in_owner = true
+position = Vector2(5187, -192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/barn/insideWindow"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_cf3c6")
+
+[node name="windowPlatforms" type="StaticBody2D" parent="Foreground/barn"]
+
+[node name="topWindowPlatform" type="CollisionShape2D" parent="Foreground/barn/windowPlatforms"]
+position = Vector2(5184, -132)
+shape = SubResource("RectangleShape2D_grhnl")
+one_way_collision = true
+
+[node name="bottomWindowPlatform" type="CollisionShape2D" parent="Foreground/barn/windowPlatforms"]
+position = Vector2(4676, 508)
+shape = SubResource("RectangleShape2D_lshlp")
+one_way_collision = true
+
+[node name="hay4" type="StaticBody2D" parent="Foreground"]
+position = Vector2(5325, 87)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/hay4"]
+position = Vector2(-2, -3.625)
+shape = SubResource("RectangleShape2D_3tsjj")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="Foreground/hay4"]
+position = Vector2(0, -3)
+texture = ExtResource("12_tayvd")
+
+[node name="stair1" type="StaticBody2D" parent="Foreground"]
+position = Vector2(4784, 394)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/stair1"]
+position = Vector2(59, 0.5)
+shape = SubResource("RectangleShape2D_tj70l")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Foreground/stair1"]
+offset_left = -9.0
+offset_top = -9.5
+offset_right = 131.0
+offset_bottom = 9.5
+color = Color(0.712235, 0.481594, 0.385004, 1)
+
+[node name="stair2" type="StaticBody2D" parent="Foreground"]
+position = Vector2(4943, 289)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/stair2"]
+position = Vector2(59, 0.5)
+shape = SubResource("RectangleShape2D_tj70l")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Foreground/stair2"]
+offset_left = -9.0
+offset_top = -9.5
+offset_right = 131.0
+offset_bottom = 9.5
+color = Color(0.712235, 0.481594, 0.385004, 1)
+
+[node name="stair3" type="StaticBody2D" parent="Foreground"]
+position = Vector2(5130, -71)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/stair3"]
+position = Vector2(59, 0.5)
+shape = SubResource("RectangleShape2D_tj70l")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Foreground/stair3"]
+offset_left = -9.0
+offset_top = -9.5
+offset_right = 131.0
+offset_bottom = 9.5
+color = Color(0.712235, 0.481594, 0.385004, 1)
 
 [node name="player" parent="Foreground" instance=ExtResource("1_5jujb")]
 unique_name_in_owner = true
-position = Vector2(116, 468)
+position = Vector2(1533, 380)
 scale = Vector2(0.480001, 0.480001)
+collision_layer = 19
+collision_mask = 19
 
 [node name="Camera2D" type="Camera2D" parent="Foreground/player"]
 position = Vector2(-2.08331, -6.24991)
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="Inventory" parent="HUD" instance=ExtResource("3_tjjlu")]
+[node name="workbench" parent="Foreground" instance=ExtResource("13_86vsi")]
 unique_name_in_owner = true
-visible = false
-position = Vector2(596, 69)
+position = Vector2(4450, 550)
+scale = Vector2(1.25, 1.25)
+
+[node name="Area2D" type="Area2D" parent="Foreground/workbench"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/workbench/Area2D"]
+position = Vector2(8.39966, 11.2)
+shape = SubResource("RectangleShape2D_8y15t")
+
+[node name="hay5" type="StaticBody2D" parent="Foreground"]
+position = Vector2(4810, 615)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/hay5"]
+position = Vector2(-2, -7.875)
+shape = SubResource("RectangleShape2D_3tsjj")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="Foreground/hay5"]
+position = Vector2(0, -3)
+texture = ExtResource("12_tayvd")
+
+[node name="item" parent="Foreground" instance=ExtResource("4_tcv4s")]
+position = Vector2(4694, 101)
+
+[node name="hay" type="StaticBody2D" parent="Foreground"]
+position = Vector2(4677, 102)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/hay"]
+position = Vector2(-2, -4.5)
+shape = SubResource("RectangleShape2D_3tsjj")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="Foreground/hay"]
+position = Vector2(0, -3)
+texture = ExtResource("12_tayvd")
+
+[node name="hay2" type="StaticBody2D" parent="Foreground"]
+position = Vector2(4807, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/hay2"]
+position = Vector2(-5, -1.75)
+shape = SubResource("RectangleShape2D_3tsjj")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="Foreground/hay2"]
+position = Vector2(0, -3)
+texture = ExtResource("12_tayvd")
+
+[node name="hay3" type="StaticBody2D" parent="Foreground"]
+position = Vector2(4677, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/hay3"]
+position = Vector2(-2, -5)
+shape = SubResource("RectangleShape2D_3tsjj")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="Foreground/hay3"]
+position = Vector2(0, -3)
+texture = ExtResource("12_tayvd")
+
+[node name="prompt" parent="Foreground" instance=ExtResource("14_g0bbl")]
+position = Vector2(2141, -77)
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="Foreground/prompt"]
+offset_left = -22.0
+offset_top = -82.0
+offset_right = 18.0
+offset_bottom = -13.0
+scale = Vector2(2.63619, 2.40137)
+theme_override_font_sizes/font_size = 50
+text = "?"
+
+[node name="exit" type="Area2D" parent="Foreground"]
+unique_name_in_owner = true
+position = Vector2(17, 362)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/exit"]
+position = Vector2(4.5, -14.5)
+shape = SubResource("RectangleShape2D_cy1dn")
+
+[node name="HUD" parent="." instance=ExtResource("15_hmit2")]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Background/sky/cloudTimer" to="." method="_on_cloud_timer_timeout"]
+[connection signal="body_exited" from="Background/sky/skyBox" to="Background/sky" method="_on_sky_box_body_exited"]
+[connection signal="area_entered" from="Foreground/outsideBarn/barnWindow" to="." method="_on_barn_window_area_entered"]
+[connection signal="area_exited" from="Foreground/outsideBarn/barnWindow" to="." method="_on_barn_window_area_exited"]
+[connection signal="body_exited" from="Foreground/workbench/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Foreground/exit" to="." method="_on_exit_area_entered"]
+[connection signal="area_exited" from="Foreground/exit" to="." method="_on_exit_area_exited"]

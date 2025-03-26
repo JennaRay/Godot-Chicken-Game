@@ -1,32 +1,35 @@
 extends AnimatedSprite2D
 
 
+func _ready():
+	play("idle_right")
+
 func play_walk_animation(left: bool):
 	if left:
-		%chimken.play("walk_left")
+		play("walk_left")
 	else: 	
-		%chimken.play("walk_right")
+		play("walk_right")
 
 func play_idle_animation(left: bool):
 	if left:
-		%chimken.play("idle_left")
+		play("idle_left")
 	else:
-		%chimken.play("idle_right")
+		play("idle_right")
 
 func play_jump_animation(left: bool):
 	if left:
-		%chimken.play("jump_left")
+		play("jump_left")
 	else:
-		%chimken.play("jump_right")
+		play("jump_right")
 	
 func play_fall_animation(left: bool):
 	if left:
-		%chimken.play("fly_left")
+		play("fly_left")
 	else:
-		%chimken.play("fly_right")
+		play("fly_right")
 
 func play_duck_animation(left: bool):
 	if left:
-		%chimken.play("duck_left")
+		play("duck_left")
 	else:
-		%chimken.play("duck_right")
+		play("duck_right")

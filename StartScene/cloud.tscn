@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://1cgpqwvyjbjw"]
+
+[ext_resource type="Script" path="res://StartScene/cloud.gd" id="1_faju0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2qbcl"]
+radius = 53.0
+
+[node name="cloud" type="Area2D"]
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("1_faju0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-79, -1)
+shape = SubResource("CircleShape2D_2qbcl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
