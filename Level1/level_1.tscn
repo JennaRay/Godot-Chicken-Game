@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cuefdlobdnamn"]
+[gd_scene load_steps=27 format=4 uid="uid://cuefdlobdnamn"]
 
 [ext_resource type="Script" path="res://Level1/level_1.gd" id="1_5ln7y"]
 [ext_resource type="Texture2D" uid="uid://c68o3mgifibre" path="res://Level1/tileset.png" id="1_ue03f"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://5kgiiv6gy3bc" path="res://Level1/sign3.png" id="4_td67t"]
 [ext_resource type="PackedScene" uid="uid://bg3vhm8xme0a4" path="res://Antagonist/antagonist2.tscn" id="6_um160"]
 [ext_resource type="PackedScene" uid="uid://c0jyggcb4wdjx" path="res://Inventory/item.tscn" id="7_giqad"]
+[ext_resource type="Texture2D" uid="uid://bog66v2086mnb" path="res://Glider/glider-right-wing.png" id="11_6har3"]
 [ext_resource type="PackedScene" uid="uid://4erdjqt75pqx" path="res://hud.tscn" id="12_1hiic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11c18"]
@@ -262,8 +263,14 @@ shape = SubResource("RectangleShape2D_f2vsd")
 position = Vector2(9514.75, 71.5)
 shape = SubResource("RectangleShape2D_t5ew5")
 
-[node name="item" parent="Foreground" instance=ExtResource("7_giqad")]
+[node name="Glider Wing (right)" parent="Foreground" instance=ExtResource("7_giqad")]
 position = Vector2(8483, 68)
+
+[node name="Right-wing" type="Sprite2D" parent="Foreground/Glider Wing (right)"]
+position = Vector2(15, -3.00001)
+rotation = 0.477346
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_6har3")
 
 [node name="HUD" parent="." instance=ExtResource("12_1hiic")]
 unique_name_in_owner = true

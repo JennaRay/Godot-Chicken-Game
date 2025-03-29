@@ -6,7 +6,7 @@ var slots_save = ["", "", "", ""]
 var sound_player = AudioStreamPlayer.new()
 var thump = preload("res://Barn/thump.wav")
 
-var save_file = "user://game_data.ini"
+var save_file = "user://player_data.ini"
 
 func _ready():
 	add_child(sound_player)

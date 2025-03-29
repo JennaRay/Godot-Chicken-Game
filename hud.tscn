@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://4erdjqt75pqx"]
+[gd_scene load_steps=7 format=3 uid="uid://4erdjqt75pqx"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1bsl4"]
 [ext_resource type="PackedScene" uid="uid://dyadulnnnejok" path="res://Inventory/inventory.tscn" id="1_k80fe"]
 [ext_resource type="FontFile" uid="uid://dmoi3cxs8kmvi" path="res://fonts/PressStart2P-Regular.ttf" id="2_w8dkx"]
 [ext_resource type="Texture2D" uid="uid://cciqqlt2ppsl7" path="res://settings.png" id="4_x565s"]
 [ext_resource type="Texture2D" uid="uid://cpfsb1lfuo87a" path="res://settings-hover.png" id="5_8ntvr"]
+[ext_resource type="Texture2D" uid="uid://2b8ayaoab1j1" path="res://HUD/heart.png" id="6_fyf54"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1bsl4")
@@ -297,6 +298,31 @@ theme_override_colors/font_color = Color(0.986849, 0.653816, 1.92523e-06, 1)
 theme_override_fonts/font = ExtResource("2_w8dkx")
 action_mode = 0
 text = "Quit"
+
+[node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(59, 22)
+texture = ExtResource("6_fyf54")
+
+[node name="Heart2" type="Sprite2D" parent="."]
+position = Vector2(92, 22)
+texture = ExtResource("6_fyf54")
+
+[node name="Heart3" type="Sprite2D" parent="."]
+position = Vector2(124, 21)
+texture = ExtResource("6_fyf54")
+
+[node name="success" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="success"]
+offset_left = 328.0
+offset_top = 201.0
+offset_right = 808.0
+offset_bottom = 261.0
+theme_override_colors/font_color = Color(0.799744, 0.644376, 0, 1)
+theme_override_fonts/font = ExtResource("2_w8dkx")
+theme_override_font_sizes/font_size = 60
+text = "Success!"
 
 [connection signal="pressed" from="settings_button" to="." method="_on_texture_button_pressed"]
 [connection signal="toggled" from="settings/bgMusicButton" to="." method="_on_bg_music_button_toggled"]

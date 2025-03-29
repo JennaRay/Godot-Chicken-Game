@@ -1,7 +1,15 @@
 extends CanvasLayer
 
+var sound_player = AudioStreamPlayer.new()
+var success_sound = load("res://HUD/success.wav")
+
 signal pause
 signal unpause
+
+var lives = 3
+
+func _ready():
+	add_child(sound_player)
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("open_inventory"):
@@ -38,6 +46,11 @@ func open_inventory():
 func game_over():
 	%gameOver.visible = true
 	
+func win_game():
+	sound_player.stream = success_sound
+	sound_player.play()
+	$success.visible = true
+
 func settings():
 	if %settings.visible:
 		%settings.visible = false
@@ -45,18 +58,33 @@ func settings():
 	else:
 		%settings.visible = true
 		pause.emit()
+		
+func lose_life():
+	lives -= 1
+	if lives == 2:
+		$Heart3.visible = false
+	if lives == 1:
+		$Heart2.visible = false
+	if lives <= 0:
+		$Heart.visible = false
 	
+func set_lives(lives: int):
+	if lives <= 2:
+		$Heart3.visible == false
+	if lives == 1:
+		$Heart2.visible == false 
+
 func _on_texture_button_pressed() -> void:
 	settings()
 
 func _on_bg_music_button_toggled(toggled_on: bool) -> void:
-	if %bgMusicButton.button_pressed:
+	if toggled_on:
 		print("on")
 	else:
 		print("off")
 
 func _on_sfx_button_toggled(toggled_on: bool) -> void:
-	if %sfxButton.button_pressed:
+	if toggled_on:
 		print("on")
 	else:
 		print("off")

@@ -6,6 +6,7 @@ var jump_strength = 500
 var gravity = 1000
 var health = 3
 signal health_depleted
+signal lost_life
 
 #player states
 var facing_left = true
@@ -101,6 +102,9 @@ func _on_interact_box_body_entered(body: Node2D) -> void:
 		body.collect()
 		
 func take_damage():
+	if not dead:
+		lost_life.emit()
+	dead = true
 	sound_player.stream = hurt_sound
 	sound_player.play()
 	%kickBackTimer.start()

@@ -24,8 +24,10 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("move_forward"):
+		%chickenMapPiece.get_child(1).rotation = 2
 		%follower.progress += 1 * speed
 	if Input.is_action_pressed("duck"):
+		%chickenMapPiece.get_child(1).rotation = -1.5
 		if %follower.progress > 0:
 			%follower.progress -= 1 * speed
 	
@@ -39,6 +41,7 @@ func _process(_delta: float) -> void:
 			
 func save_map():
 	var config_file := ConfigFile.new()
+	config_file.load(save_file)
 	
 	config_file.set_value("Map", "progress", %follower.progress)
 	config_file.set_value("Map", "pond", pond_complete)
@@ -60,16 +63,37 @@ func load_map():
 		if error:
 			print("An error happened while loading data for map: ", error)
 			return
-		
+		set_piece(config_file.get_value("Map", "piece", 1))
 		%follower.progress = config_file.get_value("Map", "progress", 0)
 		pond_complete = config_file.get_value("Map", "pond", 0)
 		sheep_complete = config_file.get_value("Map", "sheep", 0)
 		pig_complete = config_file.get_value("Map", "pig", 0)
 		bull_complete = config_file.get_value("Map", "bull", 0)
+		show_completed()
 	else:
 		save_map()
 		print("new file created")
+		
+func show_completed():
+	if pond_complete == 1:
+		$foreground/level1/complete.visible = true
 	
+func set_piece(num):
+	if num == 2:
+		var sprite = Sprite2D.new()
+		var image = load("res://Map/chicken2_top.png")
+		sprite.set_texture(image)
+		sprite.rotation = 2
+		%chickenMapPiece.remove_child(%chickenMapPiece.get_node("Chicken1Top"))
+		%chickenMapPiece.add_child(sprite)
+	if num == 3:
+		var sprite = Sprite2D.new()
+		var image = load("res://Map/chicken3_top.png")
+		sprite.set_texture(image)
+		sprite.rotation = 2
+		%chickenMapPiece.remove_child(%chickenMapPiece.get_node("Chicken1Top"))
+		%chickenMapPiece.add_child(sprite)
+		
 #signals
 func _on_level_1_body_entered(body: Node2D) -> void:
 	if body == %chickenMapPiece:

@@ -19,6 +19,7 @@ var pickup_sound = preload("res://Inventory/pickup.mp3")
 signal item_dropped(image_path)
 
 func _ready():
+	load_inv()
 	add_child(sound_player)
 
 func _process(_delta: float) -> void:
@@ -119,7 +120,7 @@ func remove(slot: int):
 	if slot in range(0, len(slots)):
 		slots[slot][1] = 0
 		slots[slot][2] = null
-		slots_save[slot] = {"image_path": "", "name": ""}
+		slots_save[slot+1] = {"image_path": "", "name": ""}
 
 	
 func set_item(slot: int):

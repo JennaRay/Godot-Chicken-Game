@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://bwl5jbt2vk1gq"]
+
+[ext_resource type="Texture2D" uid="uid://bioimmp2j3ft8" path="res://Player/chicken3/idle-left2.png" id="1_yeixk"]
+[ext_resource type="Texture2D" uid="uid://c110r3tv02mko" path="res://Player/chicken3/idle-right2.png" id="2_pa05w"]
+[ext_resource type="Texture2D" uid="uid://br8v7qhubtu5j" path="res://Player/chicken3/fly-left1.png" id="3_mmc7j"]
+[ext_resource type="Texture2D" uid="uid://vbu0flgkfsdm" path="res://Player/chicken3/fly-left2.png" id="4_6rj0k"]
+[ext_resource type="Texture2D" uid="uid://bnly5yggxd8id" path="res://Player/chicken3/fly-right1.png" id="5_rsp1h"]
+[ext_resource type="Texture2D" uid="uid://pwvorln1oig4" path="res://Player/chicken3/fly-right2.png" id="6_ixt4q"]
+[ext_resource type="Texture2D" uid="uid://bbwx52dv3ymxd" path="res://Player/chicken3/idle-left1.png" id="7_4laf6"]
+[ext_resource type="Texture2D" uid="uid://chspqn5pgplnv" path="res://Player/chicken3/idle-right1.png" id="8_1gww1"]
+[ext_resource type="Texture2D" uid="uid://dysx3qt1sbn3l" path="res://Player/chicken3/walk-left2.png" id="9_y007t"]
+[ext_resource type="Texture2D" uid="uid://dejl3j2p7opti" path="res://Player/chicken3/walk-left1.png" id="10_wsea4"]
+[ext_resource type="Texture2D" uid="uid://d0x5bva5iixce" path="res://Player/chicken3/walk-right2.png" id="11_o2u1x"]
+[ext_resource type="Texture2D" uid="uid://b3smt4rmuofp8" path="res://Player/chicken3/walk-right1.png" id="12_jsn5t"]
+[ext_resource type="Script" path="res://Player/chimken.gd" id="13_hxlmx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igk4n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yeixk")
+}],
+"loop": true,
+"name": &"duck_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pa05w")
+}],
+"loop": true,
+"name": &"duck_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mmc7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6rj0k")
+}],
+"loop": true,
+"name": &"fly_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rsp1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ixt4q")
+}],
+"loop": true,
+"name": &"fly_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4laf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_yeixk")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1gww1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pa05w")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yeixk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4laf6")
+}],
+"loop": true,
+"name": &"jump_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pa05w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1gww1")
+}],
+"loop": true,
+"name": &"jump_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_y007t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wsea4")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_o2u1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jsn5t")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[node name="chimken" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_igk4n")
+animation = &"idle_left"
+script = ExtResource("13_hxlmx")

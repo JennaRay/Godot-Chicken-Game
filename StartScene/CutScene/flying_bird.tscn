@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://8najtqim180k"]
+
+[ext_resource type="Texture2D" uid="uid://cg44xni631l5y" path="res://StartScene/CutScene/flying-1.png" id="1_8m8p5"]
+[ext_resource type="Texture2D" uid="uid://btrppha8okwh0" path="res://StartScene/CutScene/flying-2.png" id="2_7qpsa"]
+[ext_resource type="Texture2D" uid="uid://8x4c5naf7fp1" path="res://StartScene/CutScene/flying-3.png" id="3_qvcto"]
+[ext_resource type="Texture2D" uid="uid://ctqx4qt8o4fkn" path="res://StartScene/CutScene/flying-4.png" id="4_xvx07"]
+[ext_resource type="Texture2D" uid="uid://gwfe1n38hsjq" path="res://StartScene/CutScene/flying-5.png" id="5_vfob0"]
+[ext_resource type="Script" path="res://StartScene/CutScene/flying_bird.gd" id="6_4rtsp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_is51w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8m8p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7qpsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qvcto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xvx07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vfob0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="flyingBird" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_is51w")
+script = ExtResource("6_4rtsp")
+
+[node name="startTimer" type="Timer" parent="."]
+wait_time = 0.015
+one_shot = true
+
+[connection signal="timeout" from="startTimer" to="." method="_on_start_timer_timeout"]

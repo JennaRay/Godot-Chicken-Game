@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs3i3nfdad0ru"]
+
+[ext_resource type="Script" path="res://StartScene/CutScene/cutscene_2.gd" id="1_0m330"]
+[ext_resource type="Texture2D" uid="uid://fvyaymx5frfk" path="res://StartScene/CutScene/eye1.png" id="2_p3n5m"]
+[ext_resource type="Texture2D" uid="uid://jwoqax1qhe8u" path="res://StartScene/CutScene/eye2.png" id="3_iktyg"]
+[ext_resource type="PackedScene" uid="uid://8najtqim180k" path="res://StartScene/CutScene/flying_bird.tscn" id="4_qdiim"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbejx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p3n5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iktyg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="cutscene2" type="Node2D"]
+script = ExtResource("1_0m330")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 651.0
+color = Color(0.479813, 0.344996, 0.247896, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 453.0
+offset_right = 817.0
+offset_bottom = 716.0
+rotation = 0.732046
+color = Color(1, 0.724206, 0.31966, 1)
+
+[node name="eye1" type="AnimatedSprite2D" parent="."]
+position = Vector2(241, 295)
+scale = Vector2(3.08594, 3.03125)
+sprite_frames = SubResource("SpriteFrames_rbejx")
+
+[node name="eye2" type="AnimatedSprite2D" parent="."]
+position = Vector2(879, 282)
+scale = Vector2(3.08594, 3.03125)
+sprite_frames = SubResource("SpriteFrames_rbejx")
+
+[node name="birds" type="CanvasGroup" parent="."]
+modulate = Color(1, 1, 1, 0.819608)
+position = Vector2(-147, 70)
+scale = Vector2(0.712, 0.7)
+
+[node name="flyingBird2" parent="birds" instance=ExtResource("4_qdiim")]
+position = Vector2(440, 274.76)
+rotation = 0.185195
+scale = Vector2(0.550781, 0.492187)
+
+[node name="flyingBird" parent="birds" instance=ExtResource("4_qdiim")]
+position = Vector2(569.5, 270.26)
+rotation = -0.356384
+scale = Vector2(0.914063, 0.898438)
+
+[node name="flyingBird3" parent="birds" instance=ExtResource("4_qdiim")]
+position = Vector2(472, 247.76)
+scale = Vector2(0.34375, 0.34375)
+
+[node name="flyingBird4" parent="birds" instance=ExtResource("4_qdiim")]
+position = Vector2(520, 239.76)
+rotation = -0.322762
+scale = Vector2(0.501953, 0.404297)
+
+[node name="flyingBird5" parent="birds" instance=ExtResource("4_qdiim")]
+position = Vector2(437.789, 316.8)
+rotation = 0.345875
+scale = Vector2(0.85537, 0.765849)
+
+[node name="flyingBird6" parent="birds" instance=ExtResource("4_qdiim")]
+position = Vector2(675.657, 279.861)
+rotation = -0.600168
+scale = Vector2(1.1603, 1.07773)
+
+[node name="flyingBird7" parent="birds" instance=ExtResource("4_qdiim")]
+position = Vector2(403, 388.76)
+
+[node name="birds2" type="CanvasGroup" parent="."]
+modulate = Color(1, 1, 1, 0.686275)
+position = Vector2(480, 38)
+scale = Vector2(0.75, 0.75)
+
+[node name="flyingBird2" parent="birds2" instance=ExtResource("4_qdiim")]
+position = Vector2(440, 274.76)
+rotation = 0.185195
+scale = Vector2(0.550781, 0.492187)
+
+[node name="flyingBird" parent="birds2" instance=ExtResource("4_qdiim")]
+position = Vector2(569.5, 270.26)
+rotation = -0.356384
+scale = Vector2(0.914063, 0.898438)
+
+[node name="flyingBird3" parent="birds2" instance=ExtResource("4_qdiim")]
+position = Vector2(472, 247.76)
+scale = Vector2(0.34375, 0.34375)
+
+[node name="flyingBird4" parent="birds2" instance=ExtResource("4_qdiim")]
+position = Vector2(520, 239.76)
+rotation = -0.322762
+scale = Vector2(0.501953, 0.404297)
+
+[node name="flyingBird5" parent="birds2" instance=ExtResource("4_qdiim")]
+position = Vector2(437.789, 316.8)
+rotation = 0.345875
+scale = Vector2(0.85537, 0.765849)
+
+[node name="flyingBird6" parent="birds2" instance=ExtResource("4_qdiim")]
+position = Vector2(675.657, 279.861)
+rotation = -0.600168
+scale = Vector2(1.1603, 1.07773)
+
+[node name="flyingBird7" parent="birds2" instance=ExtResource("4_qdiim")]
+position = Vector2(403, 388.76)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 322)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,6 +9,7 @@ var game_file = "user://game_data.ini"
 #states
 var tutorial_on = true
 var paused = false
+var prompted = false
 
 func _ready():	
 	load_main()
@@ -22,9 +23,12 @@ func _ready():
 
 	
 	%HUD.get_node("Inventory").item_dropped.connect(drop_item)
-	$Foreground/item.item_collected.connect(collect_item)
+	$Foreground/donut.item_collected.connect(collect_item)
 	%HUD.pause.connect(pause)
 	%HUD.unpause.connect(unpause)
+	%player.lost_life.connect(%HUD.lose_life)
+	if not prompted:
+		$Foreground/prompt.prompt_collected.connect(play_cutscene)
 	
 	
 func _process(_delta: float) -> void:
@@ -47,6 +51,12 @@ func _process(_delta: float) -> void:
 				%HUD.set_prompt("looks like a place to make things")
 				%HUD.display_window(true)
 
+func play_cutscene():
+	prompted = true
+	save_main()
+	await get_tree().create_timer(0.75).timeout
+	get_tree().change_scene_to_file("res://StartScene/CutScene/cutscene_1.tscn")
+
 func save_main():
 	%HUD.save_hud()
 	%workbench.save_slots()
@@ -57,6 +67,11 @@ func save_main():
 		return
 	config_file.set_value("Map", "progress", 0)
 	config_file.save(game_file)
+	config_file.load(save_file)
+	config_file.set_value("Player", "mainPosX", %player.position.x)
+	config_file.set_value("Player", "mainPosY", %player.position.y)
+	config_file.set_value("Player", "prompted", prompted)
+	config_file.save(save_file)
 	
 func load_main():
 	var config_file := ConfigFile.new()
@@ -72,7 +87,19 @@ func load_main():
 		%player.remove_child(%player.get_node("chimken"))
 		%player.add_child(sprite)
 	if avatar == 3:
-		pass
+		var sprite = load("res://Player/chicken3.tscn").instantiate()
+		%player.remove_child(%player.get_node("chimken"))
+		%player.add_child(sprite)
+	
+	prompted = config_file.get_value("Player", "prompted", false)
+	if prompted:
+		$Foreground.remove_child($Foreground.get_node("prompt"))
+	
+	var x = config_file.get_value("Player", "mainPosX", 0)
+	var y = config_file.get_value("Player", "mainPosY", 0)
+	if !(x == 0 and y == 0):
+		%player.global_position.x = x
+		%player.global_position.y = y
 	%HUD.load_hud()
 	%workbench.load_slots()
 
@@ -91,7 +118,6 @@ func collect_item(item: Object):
 		
 func drop_item(path: String):
 	if %workbench/Area2D.overlaps_body(%player):
-		print("work bench")
 		%workbench.add_item(path)
 	else:
 		var item = preload("res://Inventory/item.tscn").instantiate()

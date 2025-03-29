@@ -1,6 +1,7 @@
 extends Node2D
 
 var save_file = "user://player_data.ini"
+var game_save_file = "user://game_data.ini"
 
 var avatar = 1
 var numAvatars = 3
@@ -66,8 +67,8 @@ func _on_start_btn_pressed() -> void:
 	sound_player.stream = sound_effect
 	sound_player.play()
 	
+	set_up_file()
 	save_choice()
-	
 	get_tree().change_scene_to_file("res://main.tscn")
 
 func set_up_file():
@@ -83,13 +84,23 @@ func set_up_file():
 	config_file.set_value("Workbench", "slot3", "")
 	config_file.set_value("Workbench", "slot4", "")
 	config_file.set_value("Player", "choice", 1)
+	config_file.set_value("Player", "lives", 3)
+	config_file.set_value("Player", "mainPosX", 0)
+	config_file.set_value("Player", "mainPosY", 0)
 	config_file.save(save_file)
 
 func save_choice():
 	var config_file := ConfigFile.new()
+	var game_file := ConfigFile.new()
+	var load_error = config_file.load(save_file)
+	if load_error:
+		print("error while loading file on menu ", load_error)
+		return
 	
 	config_file.set_value("Player", "choice", avatar)
+	game_file.set_value("Map", "piece", avatar)
 	
 	var error := config_file.save(save_file)
+	game_file.save(game_save_file)
 	if error:
 		print("An error happened while saving data for menu: ", error)

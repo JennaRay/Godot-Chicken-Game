@@ -420,7 +420,7 @@ one_way_collision = true
 position = Vector2(0, -3)
 texture = ExtResource("12_tayvd")
 
-[node name="item" parent="Foreground" instance=ExtResource("4_tcv4s")]
+[node name="donut" parent="Foreground" instance=ExtResource("4_tcv4s")]
 position = Vector2(4694, 101)
 
 [node name="hay" type="StaticBody2D" parent="Foreground"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=11 format=3 uid="uid://da2rat5c3dvjb"]
+
+[ext_resource type="Script" path="res://StartScene/CutScene/cutscene.gd" id="1_qgdca"]
+[ext_resource type="PackedScene" uid="uid://1cgpqwvyjbjw" path="res://StartScene/cloud.tscn" id="2_t15we"]
+[ext_resource type="Texture2D" uid="uid://bnco3bm1dl7fc" path="res://StartScene/cloud3texture.png" id="3_8li0m"]
+[ext_resource type="PackedScene" uid="uid://8najtqim180k" path="res://StartScene/CutScene/flying_bird.tscn" id="4_vrbkq"]
+[ext_resource type="Texture2D" uid="uid://b1mqrp2w835lj" path="res://StartScene/cloud2texture.png" id="5_543sw"]
+[ext_resource type="Texture2D" uid="uid://c58dypv0umtvu" path="res://StartScene/cloud1texture.png" id="6_x7ku7"]
+[ext_resource type="Texture2D" uid="uid://bptm8wn48kr6f" path="res://StartScene/CutScene/sun1.png" id="7_5qx15"]
+[ext_resource type="Texture2D" uid="uid://yny1t4phfrf" path="res://StartScene/CutScene/sun2.png" id="8_ektro"]
+[ext_resource type="Texture2D" uid="uid://c00pt3u7w6edr" path="res://StartScene/CutScene/sun3.png" id="9_tjf4w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spfof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5qx15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ektro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tjf4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="cutscene1" type="Node2D"]
+script = ExtResource("1_qgdca")
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1152.0
+offset_bottom = 649.0
+color = Color(0.32837, 0.767538, 0.93206, 1)
+
+[node name="cloud" parent="Background" instance=ExtResource("2_t15we")]
+position = Vector2(106, 347)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/cloud"]
+texture = ExtResource("3_8li0m")
+
+[node name="birds" type="CanvasGroup" parent="Background"]
+
+[node name="flyingBird2" parent="Background/birds" instance=ExtResource("4_vrbkq")]
+position = Vector2(440, 274.76)
+rotation = 0.185195
+scale = Vector2(0.550781, 0.492187)
+
+[node name="flyingBird" parent="Background/birds" instance=ExtResource("4_vrbkq")]
+position = Vector2(569.5, 270.26)
+rotation = -0.356384
+scale = Vector2(0.914063, 0.898438)
+
+[node name="flyingBird3" parent="Background/birds" instance=ExtResource("4_vrbkq")]
+position = Vector2(472, 247.76)
+scale = Vector2(0.34375, 0.34375)
+
+[node name="flyingBird4" parent="Background/birds" instance=ExtResource("4_vrbkq")]
+position = Vector2(520, 239.76)
+rotation = -0.322762
+scale = Vector2(0.501953, 0.404297)
+
+[node name="flyingBird5" parent="Background/birds" instance=ExtResource("4_vrbkq")]
+position = Vector2(437.789, 316.8)
+rotation = 0.345875
+scale = Vector2(0.85537, 0.765849)
+
+[node name="flyingBird6" parent="Background/birds" instance=ExtResource("4_vrbkq")]
+position = Vector2(675.657, 279.861)
+rotation = -0.600168
+scale = Vector2(1.1603, 1.07773)
+
+[node name="flyingBird7" parent="Background/birds" instance=ExtResource("4_vrbkq")]
+position = Vector2(403, 388.76)
+
+[node name="cloud2" parent="Background" instance=ExtResource("2_t15we")]
+position = Vector2(785, -5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/cloud2"]
+position = Vector2(-51, 8)
+scale = Vector2(1.77891, 1.37826)
+texture = ExtResource("5_543sw")
+
+[node name="cloud3" parent="Background" instance=ExtResource("2_t15we")]
+position = Vector2(202, 637)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/cloud3"]
+position = Vector2(-55, 17.1458)
+scale = Vector2(1.77891, 1.51335)
+texture = ExtResource("5_543sw")
+
+[node name="cloud4" parent="Background" instance=ExtResource("2_t15we")]
+position = Vector2(900, 363)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/cloud4"]
+position = Vector2(-51, 8)
+scale = Vector2(1.77891, 1.37826)
+texture = ExtResource("6_x7ku7")
+
+[node name="cloud5" parent="Background" instance=ExtResource("2_t15we")]
+position = Vector2(1014, -20)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/cloud5"]
+position = Vector2(-51, 8)
+scale = Vector2(1.77891, 1.37826)
+texture = ExtResource("5_543sw")
+
+[node name="sun" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(236, 107)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_spfof")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

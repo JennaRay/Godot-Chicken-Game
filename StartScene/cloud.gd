@@ -1,9 +1,10 @@
 extends Area2D
 
+var speed = 1
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2.RIGHT
-	position += direction
+	position += direction * speed
 	
 	
 func free_cloud():
